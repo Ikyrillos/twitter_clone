@@ -2,20 +2,20 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:social_app/common/rounded_small_button.dart';
 import 'package:social_app/constants/constants.dart';
-import 'package:social_app/features/auth/view/signup_view.dart';
 import 'package:social_app/features/auth/widgets/auth_field.dart';
 import 'package:social_app/theme/palette.dart';
 
-class LoginView extends StatefulWidget {
+class SignUpView extends StatefulWidget {
   static MaterialPageRoute route() =>
-      MaterialPageRoute(builder: (context) => const LoginView());
-  const LoginView({super.key});
+      MaterialPageRoute(builder: (context) => const SignUpView());
+
+  const SignUpView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<SignUpView> createState() => _SignUpViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _SignUpViewState extends State<SignUpView> {
   final appBar = UiConstants.appBar();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -57,22 +57,20 @@ class _LoginViewState extends State<LoginView> {
                 const SizedBox(height: 40),
                 RichText(
                   text: TextSpan(
-                    text: "Don't have an account?",
+                    text: "Already have an account?",
                     style: const TextStyle(
                       fontSize: 16,
                     ),
                     children: [
                       TextSpan(
-                        text: ' Sign up',
+                        text: ' Login',
                         style: const TextStyle(
                           color: Palette.blueColor,
                           fontSize: 16,
                         ),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            Navigator.of(context).push(
-                              SignUpView.route(),
-                            );
+                            Navigator.of(context).pop();
                           },
                       ),
                     ],
