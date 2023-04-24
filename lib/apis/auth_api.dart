@@ -1,7 +1,13 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:social_app/core/core.dart';
+
+final authApiProvider = Provider((ref) {
+  final account = ref.watch(appwriteAccountProvider);
+  return AuthApi(account: account);
+});
 
 abstract class DomainAuth {
   FutureEither<User> signUp({
